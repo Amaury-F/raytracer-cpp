@@ -67,7 +67,7 @@ std::ostream& operator<<(std::ostream &os, const vec3 &t) {
 }
 
 vec3 vec3::normalized() const {
-    float k = 1.0 / this->norm();
+    float k = 1.0f / this->norm();
     return vec3(k*x, k*y, k*z);
 }
 
@@ -147,7 +147,7 @@ inline vec3& vec3::operator/=(const vec3 &v) {
 }
 
 inline vec3& vec3::operator/=(const float t) {
-    float k = 1.0/t;
+    float k = 1.0f / t;
 
     x *= k;
     y *= k;
