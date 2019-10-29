@@ -8,8 +8,8 @@
 static float f[7] = {0.0f, 1.432f, -7.345f, 45.85f, 1000.0f, 23425425.34f, -555.553f};
 
 BOOST_AUTO_TEST_CASE( vector_addition ) {
-    vec3 a = {f[1], f[2], f[3]};
-    vec3 b = {f[4], f[5], f[6]};
+    vec3 a = vec3(f[1], f[2], f[3]);
+    vec3 b = vec3(f[4], f[5], f[6]);
 
     vec3 ab = a + b;
 
@@ -19,8 +19,8 @@ BOOST_AUTO_TEST_CASE( vector_addition ) {
 }
 
 BOOST_AUTO_TEST_CASE( vector_substraction ) {
-    vec3 a = {f[1], f[2], f[3]};
-    vec3 b = {f[4], f[5], f[6]};
+    vec3 a = vec3(f[1], f[2], f[3]);
+    vec3 b = vec3(f[4], f[5], f[6]);
 
     vec3 ab = a - b;
 
@@ -30,7 +30,7 @@ BOOST_AUTO_TEST_CASE( vector_substraction ) {
 }
 
 BOOST_AUTO_TEST_CASE( scalar_right_multiplication ) {
-    vec3 a = {f[1], f[2], f[3]};
+    vec3 a = vec3(f[1], f[2], f[3]);
     float s = f[5];
 
     vec3 ab = a * s;
@@ -41,7 +41,7 @@ BOOST_AUTO_TEST_CASE( scalar_right_multiplication ) {
 }
 
 BOOST_AUTO_TEST_CASE( scalar_left_multiplication ) {
-    vec3 a = {f[1], f[2], f[3]};
+    vec3 a = vec3(f[1], f[2], f[3]);
     float s = f[5];
 
     vec3 ab = s * a;
@@ -52,7 +52,7 @@ BOOST_AUTO_TEST_CASE( scalar_left_multiplication ) {
 }
 
 BOOST_AUTO_TEST_CASE( norm2 ) {
-    vec3 a = {f[1], f[2], f[3]};
+    vec3 a = vec3(f[1], f[2], f[3]);
     float s = f[5];
 
     vec3 ab = s * a;
@@ -61,3 +61,4 @@ BOOST_AUTO_TEST_CASE( norm2 ) {
     BOOST_CHECK(ab.y == s * a.y);
     BOOST_CHECK(ab.z == s * a.z);
 }
+
