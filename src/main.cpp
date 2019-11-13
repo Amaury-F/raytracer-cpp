@@ -6,7 +6,7 @@ int main() {
 
     Img img = Img(600, 400);
 
-    vec3 center = vec3(300, 200, 0);
+    vec3 center = vec3(300, 80, 0);
     float radius = 50;
 
 
@@ -15,10 +15,16 @@ int main() {
             vec3 pixel;
             vec3 pos = vec3((float) i, (float) j, 0);
 
-            /*
-            if ((pos - center).norm() < radius) {
-                pixel
-            }*/
+            float dist = (center - pos).norm();
+
+            if (dist < radius) {
+                pixel.r = (float) i / (float) img.width;
+                pixel.g = (float) j / (float) img.height;
+            } else {
+                pixel.b = (float) i / (float) img.width;
+                pixel.r = (float) j / (float) img.height;
+
+            }
 
             img.data[i][j] = pixel;
         }

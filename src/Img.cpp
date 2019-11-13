@@ -33,14 +33,17 @@ int Img::to8bit(float n) {
 }
 
 std::ostream &operator<<(std::ostream &os, Img &img) {
-    for (size_t col = 0; col < img.width; ++col) {
-        for (size_t row = 0; row < img.height; ++row) {
-            os << img.to8bit(img.data[row][col].r) << ' '
-            << img.to8bit(img.data[row][col].g) << ' '
-            << img.to8bit(img.data[row][col].b) << ' ';
+    for (size_t j = 0; j < img.height; ++j) {
+        for (size_t i = 0; i < img.width; ++i) {
+
+            os << img.to8bit(img.data[i][j].r) << ' '
+            << img.to8bit(img.data[i][j].g) << ' '
+            << img.to8bit(img.data[i][j].b) << ' ';
         }
+
         os << std::endl;
     }
+
     return os;
 }
 
