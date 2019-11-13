@@ -46,19 +46,45 @@ BOOST_AUTO_TEST_CASE( scalar_left_multiplication ) {
 
     vec3 ab = s * a;
 
-    BOOST_CHECK(ab.x == s * a.x);
-    BOOST_CHECK(ab.y == s * a.y);
-    BOOST_CHECK(ab.z == s * a.z);
+    BOOST_CHECK_EQUAL(ab.x, s * a.x);
+    BOOST_CHECK_EQUAL(ab.y, s * a.y);
+    BOOST_CHECK_EQUAL(ab.z, s * a.z);
 }
 
 BOOST_AUTO_TEST_CASE( norm2 ) {
     vec3 a = vec3(f[1], f[2], f[3]);
-    float s = f[5];
+    float expected = f[1] * f[1] + f[2] * f[2] + f[3] * f[3];
 
-    vec3 ab = s * a;
+    float result = a.norm2();
 
-    BOOST_CHECK(ab.x == s * a.x);
-    BOOST_CHECK(ab.y == s * a.y);
-    BOOST_CHECK(ab.z == s * a.z);
+    BOOST_CHECK_EQUAL(expected, result);
 }
 
+BOOST_AUTO_TEST_CASE( copy_assignment ) {
+    vec3 a = vec3(f[2], f[4], f[6]);
+    vec3 b = vec3(f[0], f[0], f[0]);
+
+    b = a;
+
+    BOOST_CHECK_EQUAL(a.x, b.x);
+    BOOST_CHECK_EQUAL(a.y, b.y);
+    BOOST_CHECK_EQUAL(a.z, b.z);
+}
+
+BOOST_AUTO_TEST_CASE( copy_assignment_mutation ) {
+    vec3 a = vec3(f[2], f[4], f[6]);
+    vec3 b = vec3(f[0], f[0], f[0]);
+    b = a;
+
+    b.x = f[1];
+
+    BOOST_CHECK(a.x != b.x);
+}
+
+BOOST_AUTO_TEST_CASE( normalized ) {
+    vec3 a = vec3(f[2], f[4], f[6]);
+
+    a = a.normalized();
+
+    BOOST_CHECK_EQUAL(a.norm(), 1.0f);
+}
