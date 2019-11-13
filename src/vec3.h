@@ -45,6 +45,7 @@ public:
     vec3& operator/=(const vec3 &v2);
     vec3& operator*=(float t);
     vec3& operator/=(float t);
+    vec3& operator=(const vec3 &v2);
 
 };
 
@@ -152,5 +153,13 @@ inline vec3& vec3::operator/=(const float t) {
     x *= k;
     y *= k;
     z *= k;
+    return *this;
+}
+
+vec3 &vec3::operator=(const vec3 &v2) {
+    this->e[0] = v2.e[0];
+    this->e[1] = v2.e[1];
+    this->e[2] = v2.e[2];
+
     return *this;
 }
